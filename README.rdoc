@@ -1,6 +1,6 @@
 == ActiveModel::Errors #by_type
 
-Use +#by_type+ on an instance of +ActiveModel::Errors+ (presumably in Rails) to
+Use +#by_type+ on an instance of <tt>ActiveModel::Errors</tt> (presumably in Rails) to
 retrieve a hash of error messages scoped by attribute and type. Empower your
 server-sent, serialized form/record validation messages to play nicely with data-binding JS
 frameworks. Get more granular with your validation UIs.
