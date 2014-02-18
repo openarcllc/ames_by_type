@@ -7,7 +7,7 @@ frameworks. Get more granular with your validation UIs.
 
 ==== Installation
 
-Add the following to your +Gemfile+ and +bundle install+.
+Add the following to your +Gemfile+ and <tt>bundle install</tt>.
 
   gem 'ames_by_type'
 
