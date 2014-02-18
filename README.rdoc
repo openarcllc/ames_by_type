@@ -20,9 +20,19 @@ hash. We can retrieve this hash as it exists or with full messages (by keyword a
   zebra.errors.add(:name, :blank)
   zebra.errors.add(:name, :too_short, count: 2)
   zebra.errors.by_type
-  # => { name: { blank: "can't be blank", too_short: "is too short (minimum is 2 characters)" }}
+  # =>  {
+          name: {
+            blank: "can't be blank",
+            too_short: "is too short (minimum is 2 characters)"
+          }
+        }
   zebra.errors.by_type(full_messages: true)
-  # => { name: { blank: "Name can't be blank", too_short: "Name is too short (minimum is 2 characters" }}
+  # =>  {
+          name: {
+              blank: "Name can't be blank",
+              too_short: "Name is too short (minimum is 2 characters)"
+          }
+        }
 
 In a Rails controller action:
 
@@ -36,6 +46,9 @@ In a Rails controller action:
     end
   end
   ...
+
+Learn how to set up translations for your ActiveRecord models (including error messages)
+here[http://guides.rubyonrails.org/i18n.html#translations-for-active-record-models].
 
 ==== Copyright
 
