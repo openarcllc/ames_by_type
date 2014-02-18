@@ -5,13 +5,37 @@ retrieve a hash of error messages scoped by attribute and type. Empower your
 server-sent, serialized form/record validation messages to play nicely with data-binding JS
 frameworks. Get more granular with your validation UIs.
 
+==== Installation
+
+Add the following to your +Gemfile+ and +bundle install+.
+
+  gem 'ames_by_type'
+
 ==== Usage
 
+When an error message is added to an instance of <tt>ActiveModel::Errors</tt>,
+we add said error message (organized by attribute and message type) to a +messages_by_type+
+hash. We can retrieve this hash as it exists or with full messages (by keyword argument, shown below).
+
   zebra.errors.add(:name, :blank)
+  zebra.errors.add(:name, :too_short, count: 2)
   zebra.errors.by_type
-  # => { name: { blank: "can't be blank" }}
+  # => { name: { blank: "can't be blank", too_short: "is too short (minimum is 2 characters)" }}
   zebra.errors.by_type(full_messages: true)
-  # => { name: { blank: "Name can't be blank" }}
+  # => { name: { blank: "Name can't be blank", too_short: "Name is too short (minimum is 2 characters" }}
+
+In a Rails controller action:
+
+  ...
+  def create
+    @zebra = Zebra.new(zebra_params)
+    if @zebra.save
+      render json: @zebra
+    else
+      render json: @zebra.errors.by_type
+    end
+  end
+  ...
 
 ==== Copyright
 
